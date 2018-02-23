@@ -1,0 +1,169 @@
+{
+  "filter": {
+    "type": "or",
+    "fields": [
+      {
+        "type": "or",
+        "fields": [
+     {"type": "selector", "dimension": "segment", "value": "2650784"},
+     {"type": "selector", "dimension": "segment", "value": "2650560"},
+     {"type": "selector", "dimension": "segment", "value": "2650782"},
+     {"type": "selector", "dimension": "segment", "value": "2650588"},
+     {"type": "selector", "dimension": "segment", "value": "2650530"},
+     {"type": "selector", "dimension": "segment", "value": "2650787"},
+   {"type": "selector", "dimension": "segment", "value": "2650537"}
+        ]
+      }
+    ]
+  },
+  "intervals": [
+    "2018-01-22T00:00:00.000\/2018-02-21T23:59:59.000"
+  ],
+  "granularity": "ALL",
+  "dataSource": "uu65k",
+  "aggregations": [
+    {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650784"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "A",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+    {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650560"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "B",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+     {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650782"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "C",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+     {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650588"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "D",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+     {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650530"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "E",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+     {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650787"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "F",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+     {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650537"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "G",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    }
+  ],
+  "postAggregations": [
+    {
+      "field": {
+        "func": "UNION",
+        "size": 65536,
+        "name": "(A or B)",
+        "type": "thetaSketchSetOp",
+        "fields": [
+                  {
+                    "fieldName": "A",
+                    "type": "fieldAccess"
+                  },
+                  {
+                    "fieldName": "B",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "C",
+                    "type": "fieldAccess"
+                  },
+                    {
+                    "fieldName": "D",
+                    "type": "fieldAccess"
+                  },
+                    {
+                    "fieldName": "E",
+                    "type": "fieldAccess"
+                  },
+                    {
+                    "fieldName": "F",
+                    "type": "fieldAccess"
+                  },
+                    {
+                    "fieldName": "G",
+                    "type": "fieldAccess"
+                  }
+        ]
+      },
+      "name": "AG_Union",
+      "type": "thetaSketchEstimate"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "filter": {
+    "type": "or",
+    "fields": [
+      {
+        "type": "or",
+        "fields": [
+     {"type": "selector", "dimension": "segment", "value": "2705916"},
+     {"type": "selector", "dimension": "segment", "value": "2705915"},
+     {"type": "selector", "dimension": "segment", "value": "2405739"},
+     {"type": "selector", "dimension": "segment", "value": "2705912"},
+     {"type": "selector", "dimension": "segment", "value": "27938"},
+     {"type": "selector", "dimension": "segment", "value": "2649551"},
+     {"type": "selector", "dimension": "segment", "value": "2650784"},
+     {"type": "selector", "dimension": "segment", "value": "2650560"},
+     {"type": "selector", "dimension": "segment", "value": "2650782"},
+     {"type": "selector", "dimension": "segment", "value": "2650588"},
+     {"type": "selector", "dimension": "segment", "value": "2650530"},
+     {"type": "selector", "dimension": "segment", "value": "2650787"},
+   {"type": "selector", "dimension": "segment", "value": "2650537"}
+        ]
+      }
+    ]
+  },
+  "intervals": [
+    "2018-01-22T00:00:00.000\/2018-02-21T23:59:59.000"
+  ],
+  "granularity": "ALL",
+  "dataSource": "uu65k",
+  "aggregations": [
+    {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2705916"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "A",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+    {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2705915"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "B",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+    {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2405739"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "C",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2705912"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "D",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "27938"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "E",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2649551"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "F",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650784"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child1",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650560"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child2",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650782"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child3",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650588"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child4",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650530"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child5",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650787"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child6",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    },
+        {
+      "filter": {
+        "type": "selector",
+        "dimension": "segment",
+        "value": "2650537"
+      },
+      "aggregator": {
+        "fieldName": "user_id_sketch",
+        "size": 65536,
+        "name": "child7",
+        "type": "thetaSketch"
+      },
+      "type": "filtered"
+    }
+  ],
+ "postAggregations": [
+    {
+      "field": {
+        "func": "INTERSECT",
+        "size": 65536,
+        "name": "hispanic child overlap",
+        "type": "thetaSketchSetOp",
+        "fields": [
+        {
+
+        "func": "UNION",
+        "size": 65536,
+        "name": "charmin_hispanic",
+        "type": "thetaSketchSetOp",
+        "fields": [
+
+        {
+        "func": "INTERSECT",
+        "size": 65536,
+        "name": "(column1)",
+        "type": "thetaSketchSetOp",
+        "fields": [
+                  {
+                    "fieldName": "D",
+                    "type": "fieldAccess"
+                  },
+                  {
+                    "fieldName": "F",
+                    "type": "fieldAccess"
+                  }
+        ]
+    },
+         {
+        "func": "INTERSECT",
+        "size": 65536,
+        "name": "(column 2)",
+        "type": "thetaSketchSetOp",
+        "fields": [
+                  {
+                    "fieldName": "A",
+                    "type": "fieldAccess"
+                  },
+                  {
+                    "fieldName": "F",
+                    "type": "fieldAccess"
+                  }
+        ]
+    },
+         {
+
+             "type": "fieldAccess",
+               "fieldName": "B"
+         },
+         {
+
+            "type": "fieldAccess",
+                "fieldName": "C"
+         }
+        ]
+      },                 
+    {
+        "func": "UNION",
+        "size": 65536,
+        "name": "Children",
+        "type": "thetaSketchSetOp",
+        "fields": [
+                  {
+                    "fieldName": "child1",
+                    "type": "fieldAccess"
+                  },
+                  {
+                    "fieldName": "child2",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "child3",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "child4",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "child5",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "child6",
+                    "type": "fieldAccess"
+                  },
+                                    {
+                    "fieldName": "child7",
+                    "type": "fieldAccess"
+                  }
+        ]
+    }
+        ]
+      },
+      "name": "hispanic child overlap",
+      "type": "thetaSketchEstimate"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+  ]
+}
